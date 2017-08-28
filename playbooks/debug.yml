@@ -1,0 +1,5 @@
+
+- hosts: all
+  tasks:
+  - name: Debug all vars
+    debug: var=vars
