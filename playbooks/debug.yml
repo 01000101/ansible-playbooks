@@ -1,5 +1,9 @@
 
 - hosts: all
   tasks:
-  - name: Debug all vars
+  - name: Debug vars
     debug: var=vars
+  - name: Update system packages
+    apt:
+      upgrade: dist
+      update_cache: yes
