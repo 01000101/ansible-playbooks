@@ -3,7 +3,7 @@
   gather_facts: False
 
   pre_tasks:
-  - name: Debug vars
+  - name: Debug vars (pre)
     debug: var=vars
   - name: Install Ansible prerequisites
     raw: sudo bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qy python-minimal)"
@@ -11,6 +11,10 @@
   - setup: # aka gather_facts
 
   tasks:
+  - set_fact: params="{{ cloudforms | from_json }}"
+  - name: Debug params (post)
+    debug: var=params
+    
   - name: Update system packages
     apt:
       upgrade: dist
