@@ -11,8 +11,6 @@
     raw: sudo bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qy python-pip python-virtualenv)"
     changed_when: False
   - setup: # aka gather_facts
-  - name: Install Python MySQL library
-    pip: name=MySQL-python
 
   tasks:
   # Load & parse the Cloudforms variables into "params"
