@@ -6,11 +6,13 @@
   pre_tasks:
   - name: Debug vars (pre)
     debug: var=vars
-  # Install packages needed for Ansible agent install
-  - name: Install Ansible prerequisites
-    raw: sudo bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qy python-minimal)"
+  # Install packages needed for Ansible target
+  - name: Install Python
+    raw: sudo bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qy python-pip python-virtualenv)"
     changed_when: False
   - setup: # aka gather_facts
+  - name: Install Python MySQL library
+    pip: name=MySQL-python
 
   tasks:
   # Load & parse the Cloudforms variables into "params"
