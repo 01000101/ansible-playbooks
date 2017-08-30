@@ -30,6 +30,7 @@
   - name: Install required packages
     apt: name={{ item }} state=present
     with_items:
+    - python-mysqldb
     - mysql-server
 
   # Create a new SQL database
